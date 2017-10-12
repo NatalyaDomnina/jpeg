@@ -1,16 +1,10 @@
 ### Decompression and compression jpeg image
 Start the program:
 ```sh
-app input_file.jpg
+app-jpg input_file.jpg [compression_ratio]
 ```
-Changing the compression ratio (default 50):
-```sh
-int main (int argc, char *argv[]) {
-    ...
-    int factor = 50;   // compression ratio
-    ...
-}
-```
+where [compression_ratio] optional parameter which can take values from 0 to 100 (default 50).
+
 To save the decompression image, uncomment the line:
 ```sh
 int main (int argc, char *argv[]) {

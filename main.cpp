@@ -8,7 +8,7 @@
 
 using namespace std;
 
-unsigned char *bmp_buffer; // image after decompression
+unsigned char *bmp_buffer;
 int width, height, pixel_size, bmp_size;
 
 void decompress (char *input_file) {
@@ -19,7 +19,7 @@ void decompress (char *input_file) {
         return;
     }
 
-    unsigned char *jpg_buffer; // input image
+    unsigned char *jpg_buffer;
     int row_stride;
     vector <unsigned char> buffer_tmp;
 
@@ -154,13 +154,22 @@ void compress (int factor) {
 }
 
 int main (int argc, char *argv[]) {
-    if (argc != 2) {
+    if (argc < 2) {
         cout << "Error in arguments." << endl;
-        cout << "Run as app-jpg input_file.jpg\"." << endl;
+        cout << "Run as \"app-jpg input_file.jpg [compression_ratio]\"." << endl;
         return 1;
     }
 
-    int factor = 50;            // compression ratio
+    int factor = 50;            // compression ratio default
+    if (argc == 3) {
+        if (isdigit(atoi(argv[2]))) {
+            factor = atoi(argv[2]);
+        }
+        else {
+            cout << "Error in value \"compression ratio\"" << endl;
+            cout << "The default value will be used: " << factor << endl;
+        }
+    }
 
     decompress (argv[1]);       // jpg -> bufer
     // save_decompress_image(); // bufer -> ppm (optional)
