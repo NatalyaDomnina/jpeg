@@ -5,7 +5,7 @@ app-jpg input_file.jpg [compression_ratio]
 ```
 where 
 * app-jpg - path to the application
-* input_file.jpg - input file that will be decompressed and compressed
+* input_file.jpg - path to the jpg file that will be decompressed and compressed
 * [compression_ratio] - optional parameter which can take values from 0 to 100 (default 50).
 
 The result of the program is the image:
